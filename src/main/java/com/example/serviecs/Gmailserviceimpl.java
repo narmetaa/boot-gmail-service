@@ -36,6 +36,7 @@ public class Gmailserviceimpl {
 
 		final String username = "narmetaa@gmail.com";
 		final String password = "8686112774";
+		
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
