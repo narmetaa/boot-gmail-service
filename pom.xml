@@ -20,6 +20,15 @@
 	</properties>
 
 	<dependencies>
+
+
+		<!--validtation jar for validate mail$ mobile.. -->
+		<dependency>
+			<groupId>org.validate</groupId>
+			<artifactId>validation</artifactId>
+			<version>0.0.1</version>
+
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>

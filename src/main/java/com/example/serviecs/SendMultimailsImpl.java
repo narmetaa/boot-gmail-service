@@ -17,20 +17,40 @@ import com.example.models.DemoJson;
 import com.google.gson.Gson;
 
 @Service
-public class Gmailserviceimpl {
+public class SendMultimailsImpl {
 
-	public String sendmail(String toemail) {
+	public DemoJson sendMultipleMails(String email, String subject, String body) {
 
-		System.out.println("hit the gmail services..");
+		System.out.println("executing multple mails service...");
+		String validMail = String.valueOf(Validation.isValidMail(email));
+		
+		String[] split = validMail.split(",");
+		
+		int count=0;
+		
+		for(int i=0;i<=validMail.length();i++) {
+			
+			count=count++;
+		}
+		
+		System.out.println(count);
 
-		boolean validMail = Validation.isValidMail(toemail);
+		/*
+		 * if (validMail != true) {
+		 * 
+		 * DemoJson json = Gmailserviceimpl.json("invalid emails", "003"); Gson gson =
+		 * new Gson(); String result = gson.toJson(json); System.out.println(result);
+		 * 
+		 * return json; }
+		 */
 
-		if (validMail != true) {
-			DemoJson json = json("incorrect mail id", "003");
+		if (subject.isEmpty() || subject == null || body.isEmpty() || body == null) {
+			DemoJson json = Gmailserviceimpl.json("data should not be empty", "006");
 			Gson gson = new Gson();
 			String result = gson.toJson(json);
 			System.out.println(result);
-			return result;
+
+			return json;
 
 		}
 
@@ -53,16 +73,22 @@ public class Gmailserviceimpl {
 
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("narmetaa@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toemail));
-			message.setSubject("The subscrption letter from SMS Hub  ");
-			message.setText("Thankyou for subscribe our email channel let you know our latest upadates");
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+			message.setSubject(subject);
+			message.setText(body);
 
 			Transport.send(message);
 
 			System.out.println("Done");
 
 		} catch (MessagingException e) {
-			e.printStackTrace();
+
+			DemoJson json = json("No Email Found", "005");
+			Gson gson = new Gson();
+			String result = gson.toJson(json);
+			System.out.println(result);
+			return json;
+
 		}
 		System.out.println("email method has completed succsfully...");
 
@@ -71,7 +97,7 @@ public class Gmailserviceimpl {
 		String result = gson.toJson(json);
 		System.out.println(result);
 
-		return result;
+		return json;
 
 	}
 
