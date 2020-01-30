@@ -34,8 +34,8 @@ public class Gmailserviceimpl {
 
 		}
 
-		final String username = "narmetaa@gmail.com";
-		final String password = "8686112774";
+		final String username = "username@gmail.com";
+		final String password = "123456799";
 		
 
 		Properties prop = new Properties();
