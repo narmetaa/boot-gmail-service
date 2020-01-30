@@ -21,8 +21,8 @@ public class Gmailserviceimpl {
 	public String sendmail(String toemail) {
 
 		System.out.println("hit the gmail services..");
-		final String username = "narmetaa@gmail.com";
-		final String password = "8686112774";
+		final String username = "username@gmail.com";
+		final String password = "password";
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
